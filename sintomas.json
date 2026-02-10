@@ -1,0 +1,61 @@
+{
+  "p_dolor": {
+    "texto": "Dolor",
+    "score": 3,
+    "children": {
+      "dolor_cabeza": { "texto": "Cabeza", "score": 5 },
+      "dolor_abdomen": { "texto": "Abdomen", "score": 8 },
+      "dolor_pecho": { "texto": "Pecho", "score": 20 },
+      "dolor_otros": { "texto": "Otras zonas", "score": 4 }
+    }
+  },
+  "p_resp": {
+    "texto": "Problema Respiratorio",
+    "score": 5,
+    "children": {
+      "resp_leve": { "texto": "Dificultad leve", "score": 6 },
+      "resp_dificultad": { "texto": "Dificultad moderada", "score": 15 },
+      "resp_cianosis": { "texto": "Labios azulados (Cianosis)", "score": 30 }
+    }
+  },
+  "p_digest": {
+    "texto": "Problema digestivo / urinario",
+    "score": 4,
+    "children": {
+      "digest_comida": { "texto": "Intolerancia a comida/bebida", "score": 6 },
+      "digest_medicacion": { "texto": "No tolera medicación", "score": 8 },
+      "digest_vomitos": { "texto": "Vómitos o diarrea persistente", "score": 12 }
+    }
+  },
+  "p_neuro": { 
+    "texto": "Problema Neurológico", 
+    "score": 15 
+  },
+  "p_lesion": { 
+    "texto": "Lesión / Accidente", 
+    "score": 10 
+  },
+  "p_fiebre": { 
+    "texto": "Fiebre / Infección", 
+    "score": 5 
+  },
+  "p_empeoro": { 
+    "texto": "Condición que empeoró", 
+    "score": 6 
+  },
+  "p_admin": { 
+    "texto": "Administrativo", 
+    "score": 0 
+  },
+  "config_puntajes": {
+    "edad": [
+      { "min": 0, "max": 2, "puntos": 15, "label": "Bebés / Lactantes (Muy Grave)" },
+      { "min": 3, "max": 12, "puntos": 8, "label": "Niños (Grave)" },
+      { "min": 13, "max": 64, "puntos": 2, "label": "Jóvenes y Adultos (Normal)" },
+      { "min": 65, "max": 85, "puntos": 10, "label": "Adulto Mayor (Peligroso)" },
+      { "min": 86, "max": 120, "puntos": 15, "label": "Anciano Frágil (Muy Peligroso)" }
+    ],
+    "embarazo": 30,
+    "graves": 50
+  }
+}

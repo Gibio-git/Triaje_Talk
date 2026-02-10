@@ -1,0 +1,299 @@
+/* Estilos básicos */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    padding-top: 100px;
+}
+
+form {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 25px;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* Estilos del marcador */
+#score-display {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #2c3e50;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    font-size: 1.5em;
+    font-weight: bold;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    z-index: 100;
+}
+
+#score-value {
+    color: #f1c40f;
+    margin-left: 10px;
+    font-size: 1.2em;
+}
+
+/* Estilos de las hojas */
+.survey-page { 
+    display: none; 
+}
+#hoja1 { 
+    display: block; 
+}
+
+/* Estilos de los fieldset y labels */
+fieldset { 
+    border: 1px solid #ddd; 
+    border-radius: 5px; 
+    padding: 15px; 
+    margin-bottom: 20px; 
+}
+legend { 
+    font-size: 1.2em; 
+    font-weight: bold; 
+    margin-bottom: 10px; 
+}
+label { 
+    display: block; 
+    margin: 10px 0 5px; 
+}
+
+/* Estilos de inputs */
+input[type="number"], 
+input[type="radio"], 
+input[type="checkbox"] { 
+    margin-right: 5px; 
+}
+input[type="radio"] + label, 
+input[type="checkbox"] + label { 
+    display: inline-block; 
+    margin-right: 15px; 
+}
+
+/* Estilos de botones de navegación */
+.nav-buttons { 
+    display: flex; 
+    justify-content: space-between; 
+    margin-top: 20px; 
+}
+button { 
+    padding: 10px 15px; 
+    border: none; 
+    border-radius: 5px; 
+    cursor: pointer; 
+    font-size: 1em; 
+}
+button[type="button"] { 
+    background-color: #007bff; 
+    color: white; 
+}
+button.submit-button {
+    background-color: #28a745;
+    color: white;
+}
+button:disabled { 
+    background-color: #ccc; 
+}
+
+/* Estilos para la hoja final */
+#final-score-value {
+    font-size: 3.5em;
+    font-weight: bold;
+    color: #e74c3c; /* Un color rojo para "peligro" */
+    text-align: center;
+    display: block;
+    margin: 10px 0;
+}
+
+.center-button {
+    justify-content: center;
+}
+
+/* ESTILOS PARA LOS BOTONES DE HOJA 1 */
+        
+/* Oculta los inputs de radio que no queremos ver */
+.hidden-radio-choice {
+    display: none;
+}
+
+/* Estilo principal del botón grande */
+.big-choice-button {
+    display: block; /* Ocupa todo el ancho */
+    padding: 25px 20px;
+    margin: 15px 0;
+    border: 2px solid #007bff;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 1.3em;
+    font-weight: bold;
+    color: #007bff;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* Efecto al pasar el mouse */
+.big-choice-button:hover {
+    background-color: #f0f8ff; /* Un azul muy claro */
+}
+
+/* Estilo visual para cuando se selecciona */
+.hidden-radio-choice:checked + .big-choice-button {
+    background-color: #007bff;
+    color: white;
+}
+
+/* --- NUEVOS ESTILOS PARA HOJA 2 --- */
+
+/* Contenedor del Slider de Edad */
+.range-slider-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 5px;
+}
+.range-slider-container span {
+    font-size: 0.9em;
+    color: #555;
+    flex-basis: 30px; /* Asigna un espacio fijo */
+}
+.range-slider-container span:first-of-type {
+    text-align: left;
+}
+.range-slider-container span:last-of-type {
+    text-align: right;
+}
+
+/* Estilo del slider (input tipo range) */
+input[type="range"] {
+    flex-grow: 1; /* Ocupa el espacio restante */
+    margin: 0 10px;
+    cursor: pointer;
+}
+
+/* El número de la edad que se actualiza */
+#edad-output {
+    font-weight: bold;
+    color: #007bff;
+    font-size: 1.1em;
+}
+
+/* Contenedor para los botones pequeños (para que estén en línea) */
+.choice-group {
+    display: flex;
+    gap: 10px; /* Espacio entre botones */
+    margin-top: 5px;
+}
+
+/* Botones pequeños (para Sexo y Embarazo) */
+.small-choice-button {
+    display: block;
+    flex-grow: 1; /* Hace que ambos botones ocupen el mismo espacio */
+    padding: 15px 10px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 1em;
+    font-weight: bold;
+    color: #333;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+.small-choice-button:hover {
+    background-color: #f9f9f9;
+    border-color: #999;
+}
+
+/* Estilo para el área de texto de narración */
+#hoja4_narrativa textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box; /* Asegura que padding no aumente el ancho */
+    resize: vertical; /* Permite redimensionar solo verticalmente */
+    margin-top: 5px;
+}
+
+/* Estilo cuando el radio oculto está seleccionado */
+.hidden-radio-choice:checked + .small-choice-button {
+    background-color: #007bff;
+    color: white;
+    border-color: #007bff;
+}
+
+/* =========================================
+   CAMBIOS PARA EL ESTILO CLÍNICO PRO
+   ========================================= */
+
+/* 1. El contenedor principal de cada síntoma ahora es una "tarjeta" */
+.grupo-sintoma {
+    border-left: 5px solid #3182ce; /* La barra azul lateral que te gustó */
+    background: #ffffff;
+    margin-bottom: 15px;
+    border-radius: 6px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.08); /* Sombra suave para dar profundidad */
+    overflow: hidden;
+    border-top: 1px solid #edf2f7;
+    border-right: 1px solid #edf2f7;
+    border-bottom: 1px solid #edf2f7;
+}
+
+/* 2. La fila del título (Padre) ahora es grande y clickeable */
+.padre-row {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 18px; /* Más espacio para que sea fácil tocar con el dedo */
+    font-weight: bold;
+    color: #2c5282;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.padre-row:hover {
+    background: #f7fafc; /* Efecto sutil al pasar el mouse */
+}
+
+/* 3. La magia del Grid: Los hijos ahora se ven en dos columnas */
+.hijos-container {
+    display: none; /* Se activa como 'grid' desde el JS */
+    grid-template-columns: 1fr 1fr; /* Divide el espacio en 2 columnas iguales */
+    gap: 12px;
+    padding: 20px;
+    background: #f8fafc;
+    border-top: 1px solid #e2e8f0;
+}
+
+/* 4. Cada síntoma hijo ahora parece un botoncito individual */
+.hijo-item {
+    background: #ebf8ff;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #2a4365;
+    border: 1px solid #bee3f8;
+    transition: all 0.2s;
+}
+
+.hijo-item:hover {
+    background: #e1f5fe;
+    border-color: #90cdf4;
+}
+
+/* 5. Ajuste para celulares: Si la pantalla es angosta, vuelve a 1 columna */
+@media (max-width: 500px) {
+    .hijos-container {
+        grid-template-columns: 1fr;
+    }
+}
