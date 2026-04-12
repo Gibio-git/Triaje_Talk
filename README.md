@@ -1,6 +1,10 @@
 # 🏥 Documentación Técnica: Triaje_Talk
 
-# 1. Descripción General
+# 1. Introducción
+
+El sistema de triage constituye una pieza crítica en la atención hospitalaria, ya que permite priorizar a los pacientes según la gravedad de su condición clínica. En instituciones públicas como el Hospital Municipal San José, la creciente demanda asistencial, la variabilidad en la presentación de los síntomas y la necesidad de decisiones rápidas pueden generar cuellos de botella, tiempos de espera prolongados y, en algunos casos, una asignación subóptima de prioridades. A esto se suma la dependencia de la interpretación inicial del personal de salud, que puede verse afectada por la sobrecarga laboral y la heterogeneidad en la comunicación con los pacientes.
+
+# 2. Descripción General
 Triaje_Talk es una aplicación web interactiva (SPA) diseñada para la clasificación rápida de pacientes en entornos de salud. Su objetivo es determinar la urgencia médica mediante un algoritmo de puntos que evalúa datos demográficos, factores de riesgo y síntomas específicos.
 
 El sistema destaca por ofrecer dos caminos al usuario:
@@ -9,37 +13,35 @@ Triaje Estructurado: Selección de síntomas por categorías con cálculo autom�
 
 Triaje Narrativo: Un campo de texto libre para que el paciente explique su situación, conectándose vía webhook con servicios de procesamiento externo (IA/n8n).
 
-# 2. Arquitectura de Archivos y Diseño
+# 3. Arquitectura de Archivos y Diseño
 El proyecto se basa en una separación clara de responsabilidades:
 
-index.html: Define el flujo de "hojas" (pasos). Utiliza contenedores vacíos que se rellenan dinámicamente para mantener el código limpio.
+- index.html: Define el flujo de "hojas" (pasos). Utiliza contenedores vacíos que se rellenan dinámicamente para mantener el código limpio.
 
-style.css (Estilo Clínico Pro): Implementa una interfaz profesional mediante:
+- style.css (Estilo Clínico Pro): Implementa una interfaz profesional mediante:
 
-CSS Grid: Los síntomas secundarios se organizan en dos columnas para maximizar el espacio visual.
+-   CSS Grid: Los síntomas secundarios se organizan en dos columnas para maximizar el espacio visual.
+-   Jerarquía Visual: Uso de barras laterales azules (border-left) y tarjetas con sombras para diferenciar categorías.
+-   Diseño Responsivo: Adaptación automática a una sola columna en dispositivos móviles.
 
-Jerarquía Visual: Uso de barras laterales azules (border-left) y tarjetas con sombras para diferenciar categorías.
+- scripts.js: Gestiona la navegación, el cálculo de puntos y la interactividad.
 
-Diseño Responsivo: Adaptación automática a una sola columna en dispositivos móviles.
+- sintomas.json: Actúa como la base de datos centralizada de síntomas y baremos de puntuación.
 
-scripts.js: Gestiona la navegación, el cálculo de puntos y la interactividad.
-
-sintomas.json: Actúa como la base de datos centralizada de síntomas y baremos de puntuación.
-
-# 3. Lógica del Sistema de Puntuación
+# 4. Lógica del Sistema de Puntuación
 El puntaje de peligro se calcula de forma dinámica y reactiva mediante la función calculateScore(), sumando tres factores principales:
 
-Edad (Baremo Dinámico): Los puntos se asignan según rangos definidos en el JSON (ej. recién nacidos o adultos mayores reciben una base de puntos más alta).
+- Edad (Baremo Dinámico): Los puntos se asignan según rangos definidos en el JSON (ej. recién nacidos o adultos mayores reciben una base de puntos más alta).
 
-Estado de Riesgo: Se suman puntos adicionales por condiciones como el embarazo.
+- Estado de Riesgo: Se suman puntos adicionales por condiciones como el embarazo.
 
-Selección Jerárquica:
+- Selección Jerárquica:
 
-Síntoma Padre: Activar una categoría (ej: Respiratorio) suma un puntaje base.
+-   Síntoma Padre: Activar una categoría (ej: Respiratorio) suma un puntaje base.
 
-Síntoma Hijo: Especificar el síntoma (ej: Cianosis) suma puntos críticos adicionales.
+-   Síntoma Hijo: Especificar el síntoma (ej: Cianosis) suma puntos críticos adicionales.
 
-# 4. Cómo realizar cambios futuros
+# 5. Cómo realizar cambios futuros
 
 Para mantener o escalar el sistema sin romper la lógica principal, sigue estas guías:
 
