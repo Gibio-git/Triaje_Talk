@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Triaje Talk - Encuesta Médica</title>
+    <title>Agente Triage - Encuesta Médica</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -16,7 +16,7 @@
         <section class="brand-panel">
             <img src="./LOGOS/CIBIO_Logo_transp.png" class="logo">
             <p class="eyebrow">Evaluacion Inicial</p>
-            <h1>Triaje Talk</h1>
+            <h1>Agente Triage</h1>
             <p class="brand-subtitle">Orientacion rapida para registrar sintomas y priorizar la atencion clinica.</p>
         </section>
 
@@ -25,7 +25,7 @@
         <div id="hoja1" class="survey-page">
             <fieldset>
                 <legend>Hoja 1: Identificación</legend>
-                <label>¿Quién está respondiendo?</label>
+                <label class="intro-question">¿Quién está respondiendo?</label>
                 
                 <input type="radio" id="paciente" name="respondiente" value="paciente" required class="hidden-radio-choice">
                 <label for="paciente" class="big-choice-button" onclick="showPage('hoja2')">
