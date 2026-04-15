@@ -31,7 +31,7 @@ body {
         radial-gradient(circle at top left, rgba(31, 111, 178, 0.16), transparent 28%),
         radial-gradient(circle at bottom right, rgba(47, 143, 103, 0.12), transparent 24%),
         linear-gradient(160deg, var(--bg-top), var(--bg-bottom));
-    padding: 120px 24px 32px;
+    padding: 112px 24px 32px;
 }
 
 body::before {
@@ -57,7 +57,7 @@ body::before {
 
 .brand-panel {
     position: sticky;
-    top: 120px;
+    top: 112px;
     padding: 28px;
     border-radius: 28px;
     background: linear-gradient(180deg, rgba(255, 255, 255, 0.95), rgba(241, 247, 252, 0.92));
@@ -81,6 +81,27 @@ body::before {
     letter-spacing: 0.16em;
     text-transform: uppercase;
     color: var(--accent);
+}
+
+.entities {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.hospital-name {
+    margin: 0 10px 18px 0;
+    padding: 8px 14px;
+    border-radius: 999px;
+    background: rgba(21, 79, 130, 0.08);
+    border: 1px solid rgba(21, 79, 130, 0.16);
+    color: var(--accent-dark);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: none;
+    width: max-content;
+    text-wrap-mode: nowrap;
 }
 
 .brand-panel h1 {
@@ -109,13 +130,29 @@ form {
     backdrop-filter: blur(12px);
 }
 
-#score-display {
+.hospital-container{
     position: fixed;
-    top: 18px;
-    left: 50%;
-    transform: translateX(-50%);
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0;
+    text-align: center;
+    width: 100%;
+    padding: 16px 16px 0;
+    z-index: 120;
+}
+
+.hospital-container p{
+    display: none;
+}
+
+#score-display {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 10px;
     padding: 14px 24px;
     border-radius: 999px;
@@ -128,6 +165,7 @@ form {
     border: 1px solid rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
     z-index: 100;
+    max-width: min(100%, 320px);
 }
 
 #score-value {
@@ -231,6 +269,15 @@ input[type="range"] {
     cursor: pointer;
 }
 
+/*deshabilitar el input de embarazo al seleccionar hombre*/
+input:disabled + label {
+    background-color: #eee !important;
+    color: #999 !important;
+    border-color: #ccc !important;
+    cursor: not-allowed;
+}
+
+
 button {
     min-height: 48px;
     padding: 12px 18px;
@@ -284,7 +331,6 @@ button:disabled {
 .center-button button {
     max-width: 280px;
 }
-
 #final-score-value {
     display: block;
     margin: 14px 0;
@@ -488,11 +534,20 @@ button:disabled {
         position: relative;
         top: 0;
     }
+
+    .entities{
+        flex-direction: row;
+        gap: 18px;
+        align-items: center;
+        justify-content: space-between;
+        text-wrap: no-wrap;
+    }
+    
 }
 
 @media (max-width: 640px) {
     body {
-        padding: 110px 16px 24px;
+        padding: 96px 16px 24px;
     }
 
     form,
@@ -502,9 +557,19 @@ button:disabled {
         border-radius: 22px;
     }
 
+    .hospital-container {
+        padding: 12px 12px 0;
+    }
+
+    .eyebrow::before {
+        margin-bottom: 14px;
+        font-size: 0.72rem;
+    }
+
     #score-display {
-        width: calc(100% - 24px);
-        justify-content: center;
+        width: 100%;
+        max-width: 100%;
+        padding: 12px 16px;
         font-size: 0.94rem;
     }
 
@@ -525,5 +590,13 @@ button:disabled {
     #hoja1 .big-choice-button {
         width: 100%;
         flex-basis: 100%;
+    }
+}
+
+@media (max-width: 530px) {
+    .entities{
+        flex-direction: column;
+        align-items: start;
+        gap: 0;
     }
 }
