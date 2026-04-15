@@ -6,7 +6,7 @@ body {
     justify-content: center;
     align-items: center;
     padding: 20px;
-    padding-top: 100px;
+    padding-top: 140px;
 }
 
 form {
@@ -209,6 +209,21 @@ input[type="range"] {
 .small-choice-button:hover {
     background-color: #f9f9f9;
     border-color: #999;
+}
+
+/*Estilo para titulo de hoispital*/
+.hospital-header {
+    position: fixed;
+    top: 70px; /* debajo del score */
+    width: 100%;
+    text-align: center;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #2c3e50;
+    background: #ecf0f1;
+    padding: 10px;
+    z-index: 90;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
 /* Estilo para el área de texto de narración */
