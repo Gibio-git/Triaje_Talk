@@ -1,96 +1,272 @@
-/* Estilos básicos */
+:root {
+    --bg-top: #f4f8fc;
+    --bg-bottom: #dfeaf4;
+    --surface: rgba(255, 255, 255, 0.92);
+    --surface-strong: #ffffff;
+    --surface-soft: #f8fbfe;
+    --border: rgba(46, 89, 122, 0.16);
+    --text-primary: #17324d;
+    --text-secondary: #5a728a;
+    --accent: #1f6fb2;
+    --accent-dark: #154f82;
+    --accent-soft: #eaf4fb;
+    --success: #2f8f67;
+    --warning: #d79d1d;
+    --danger: #cc4b4b;
+    --shadow-lg: 0 24px 60px rgba(20, 49, 78, 0.16);
+    --shadow-md: 0 14px 32px rgba(24, 54, 84, 0.12);
+    --shadow-sm: 0 8px 18px rgba(26, 58, 90, 0.08);
+}
+
+* {
+    box-sizing: border-box;
+}
+
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    margin: 0;
+    min-height: 100vh;
+    font-family: "Aptos", "Segoe UI", "Trebuchet MS", sans-serif;
+    color: var(--text-primary);
+    background:
+        radial-gradient(circle at top left, rgba(31, 111, 178, 0.16), transparent 28%),
+        radial-gradient(circle at bottom right, rgba(47, 143, 103, 0.12), transparent 24%),
+        linear-gradient(160deg, var(--bg-top), var(--bg-bottom));
+    padding: 112px 24px 32px;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image: linear-gradient(rgba(255, 255, 255, 0.28) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.28) 1px, transparent 1px);
+    background-size: 42px 42px;
+    opacity: 0.25;
+    pointer-events: none;
+    z-index: -2;
+}
+
+.page-shell {
+    width: min(1080px, 100%);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: minmax(280px, 340px) minmax(0, 1fr);
+    gap: 28px;
+    align-items: start;
+}
+
+.brand-panel {
+    position: sticky;
+    top: 112px;
+    padding: 28px;
+    border-radius: 28px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.95), rgba(241, 247, 252, 0.92));
+    border: 1px solid rgba(255, 255, 255, 0.72);
+    box-shadow: var(--shadow-lg);
+    backdrop-filter: blur(14px);
+}
+
+.logo {
+    display: block;
+    width: min(220px, 100%);
+    height: auto;
+    object-fit: contain;
+    margin-bottom: 22px;
+}
+
+.eyebrow {
+    margin: 0 0 10px;
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent);
+}
+
+.entities {
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    align-items: center;
-    padding: 20px;
-    padding-top: 140px;
+}
+
+.hospital-name {
+    margin: 0 10px 18px 0;
+    padding: 8px 14px;
+    border-radius: 999px;
+    background: rgba(21, 79, 130, 0.08);
+    border: 1px solid rgba(21, 79, 130, 0.16);
+    color: var(--accent-dark);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: none;
+    width: max-content;
+    text-wrap-mode: nowrap;
+}
+
+.brand-panel h1 {
+    margin: 0 0 12px;
+    font-size: clamp(2.2rem, 4vw, 3.1rem);
+    line-height: 0.98;
+    letter-spacing: -0.04em;
+    color: #12314d;
+}
+
+.brand-subtitle {
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--text-secondary);
 }
 
 form {
-    background-color: #fff;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    padding: 25px;
-    width: 90%;
-    max-width: 500px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 100%;
+    background: var(--surface);
+    border: 1px solid rgba(255, 255, 255, 0.78);
+    border-radius: 30px;
+    padding: 32px;
+    box-shadow: var(--shadow-lg);
+    backdrop-filter: blur(12px);
 }
 
-/* Estilos del marcador */
-#score-display {
+.hospital-container{
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
-    background-color: #2c3e50;
-    color: white;
-    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0;
     text-align: center;
-    font-size: 1.5em;
-    font-weight: bold;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    width: 100%;
+    padding: 16px 16px 0;
+    z-index: 120;
+}
+
+.hospital-container p{
+    display: none;
+}
+
+#score-display {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 14px 24px;
+    border-radius: 999px;
+    background: rgba(16, 39, 60, 0.9);
+    color: #f9fcff;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    box-shadow: 0 14px 30px rgba(10, 28, 43, 0.22);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
     z-index: 100;
+    max-width: min(100%, 320px);
 }
 
 #score-value {
-    color: #f1c40f;
-    margin-left: 10px;
-    font-size: 1.2em;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 38px;
+    min-height: 38px;
+    padding: 0 10px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.12);
+    color: #ffd56a;
+    font-size: 1.15rem;
 }
 
-/* Estilos de las hojas */
-.survey-page { 
-    display: none; 
-}
-#hoja1 { 
-    display: block; 
+.survey-page {
+    display: none;
+    animation: fadeUp 0.35s ease;
 }
 
-/*Estilo para titulo de hoispital*/
-.hospital-header {
-    position: fixed;
-    top: 80px; /* debajo del score */
-    width: 100%;
+#hoja1 {
+    display: block;
+}
+
+#hoja1 fieldset {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: stretch;
+    gap: 16px;
     text-align: center;
-    font-size: 1.2em;
-    font-weight: bold;
-    color: #2c3e50;
-    background: #ecf0f1;
-    padding: 10px;
-    z-index: 90;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
-/* Estilos de los fieldset y labels */
-fieldset { 
-    border: 1px solid #ddd; 
-    border-radius: 5px; 
-    padding: 15px; 
-    margin-bottom: 20px; 
-}
-legend { 
-    font-size: 1.2em; 
-    font-weight: bold; 
-    margin-bottom: 10px; 
-}
-label { 
-    display: block; 
-    margin: 10px 0 5px; 
+#hoja1 legend {
+    width: 100%;
+    text-align: left;
 }
 
-/* Estilos de inputs */
-input[type="number"], 
-input[type="radio"], 
-input[type="checkbox"] { 
-    margin-right: 5px; 
+#hoja1 .intro-question {
+    width: 100%;
+    margin-bottom: 18px;
+    text-align: center;
+    font-size: 1.08rem;
 }
-input[type="radio"] + label, 
-input[type="checkbox"] + label { 
-    display: inline-block; 
-    margin-right: 15px; 
+
+fieldset {
+    margin: 0 0 24px;
+    padding: 28px;
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(248, 251, 254, 0.94));
+    box-shadow: var(--shadow-sm);
+}
+
+legend {
+    padding: 0 12px;
+    font-size: 1.15rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: var(--accent-dark);
+}
+
+label {
+    display: block;
+    margin: 12px 0 8px;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+p {
+    color: var(--text-secondary);
+    line-height: 1.65;
+}
+
+ul {
+    margin: 14px 0 0;
+    padding-left: 18px;
+    color: var(--text-secondary);
+}
+
+li + li {
+    margin-top: 8px;
+}
+
+input[type="number"],
+input[type="radio"],
+input[type="checkbox"] {
+    margin-right: 5px;
+}
+
+input[type="radio"] + label,
+input[type="checkbox"] + label {
+    display: inline-block;
+    margin-right: 15px;
+}
+
+input[type="range"] {
+    flex-grow: 1;
+    margin: 0 10px;
+    accent-color: var(--accent);
+    cursor: pointer;
 }
 
 /*deshabilitar el input de embarazo al seleccionar hombre*/
@@ -101,223 +277,326 @@ input:disabled + label {
     cursor: not-allowed;
 }
 
-/* Estilos de botones de navegación */
-.nav-buttons { 
-    display: flex; 
-    justify-content: space-between; 
-    margin-top: 20px; 
-}
-button { 
-    padding: 10px 15px; 
-    border: none; 
-    border-radius: 5px; 
-    cursor: pointer; 
-    font-size: 1em; 
-}
-button[type="button"] { 
-    background-color: #007bff; 
-    color: white; 
-}
-button.submit-button {
-    background-color: #28a745;
-    color: white;
-}
-button:disabled { 
-    background-color: #ccc; 
+
+button {
+    min-height: 48px;
+    padding: 12px 18px;
+    border: none;
+    border-radius: 14px;
+    cursor: pointer;
+    font-size: 0.98rem;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    transition: transform 0.18s ease, box-shadow 0.18s ease, background-color 0.18s ease;
+    margin-bottom: 5px;
 }
 
-/* Estilos para la hoja final */
-#final-score-value {
-    font-size: 3.5em;
-    font-weight: bold;
-    color: #e74c3c; /* Un color rojo para "peligro" */
-    text-align: center;
-    display: block;
-    margin: 10px 0;
+button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 10px 18px rgba(26, 58, 90, 0.14);
+}
+
+button[type="button"] {
+    background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+    color: white;
+}
+
+button.submit-button {
+    background: linear-gradient(135deg, #2f8f67, #236c4d);
+    color: white;
+}
+
+button:disabled {
+    background: #b7c3ce;
+    box-shadow: none;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.nav-buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.nav-buttons button {
+    flex: 1;
 }
 
 .center-button {
     justify-content: center;
 }
 
-/* ESTILOS PARA LOS BOTONES DE HOJA 1 */
-        
-/* Oculta los inputs de radio que no queremos ver */
+.center-button button {
+    max-width: 280px;
+}
+#final-score-value {
+    display: block;
+    margin: 14px 0;
+    text-align: center;
+    font-size: clamp(3.2rem, 9vw, 5rem);
+    font-weight: 900;
+    letter-spacing: -0.05em;
+    color: var(--danger);
+}
+
+#final-triage-level {
+    color: var(--accent-dark);
+}
+
 .hidden-radio-choice {
     display: none;
 }
 
-/* Estilo principal del botón grande */
 .big-choice-button {
-    display: block; /* Ocupa todo el ancho */
-    padding: 25px 20px;
-    margin: 15px 0;
-    border: 2px solid #007bff;
-    border-radius: 8px;
+    display: block;
+    width: min(100%, 320px);
+    padding: 22px 20px;
+    margin: 15px auto;
+    border: 1px solid rgba(31, 111, 178, 0.22);
+    border-radius: 18px;
+    background: linear-gradient(180deg, #ffffff, #f3f9fd);
     text-align: center;
-    font-size: 1.3em;
-    font-weight: bold;
-    color: #007bff;
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: var(--accent-dark);
     cursor: pointer;
-    transition: background-color 0.2s ease, color 0.2s ease;
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease, background-color 0.18s ease;
 }
 
-/* Efecto al pasar el mouse */
+#hoja1 .big-choice-button {
+    flex: 0 1 240px;
+    margin: 0;
+}
+
 .big-choice-button:hover {
-    background-color: #f0f8ff; /* Un azul muy claro */
+    transform: translateY(-2px);
+    border-color: rgba(31, 111, 178, 0.42);
+    background: linear-gradient(180deg, #ffffff, #edf6fd);
 }
 
-/* Estilo visual para cuando se selecciona */
 .hidden-radio-choice:checked + .big-choice-button {
-    background-color: #007bff;
+    background: linear-gradient(135deg, var(--accent), var(--accent-dark));
     color: white;
+    border-color: transparent;
 }
 
-/* --- NUEVOS ESTILOS PARA HOJA 2 --- */
-
-/* Contenedor del Slider de Edad */
 .range-slider-container {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 8px;
     margin-top: 5px;
 }
+
 .range-slider-container span {
-    font-size: 0.9em;
-    color: #555;
-    flex-basis: 30px; /* Asigna un espacio fijo */
-}
-.range-slider-container span:first-of-type {
-    text-align: left;
-}
-.range-slider-container span:last-of-type {
-    text-align: right;
+    flex-basis: 36px;
+    font-size: 0.88rem;
+    color: var(--text-secondary);
 }
 
-/* Estilo del slider (input tipo range) */
-input[type="range"] {
-    flex-grow: 1; /* Ocupa el espacio restante */
-    margin: 0 10px;
-    cursor: pointer;
-}
-
-/* El número de la edad que se actualiza */
 #edad-output {
-    font-weight: bold;
-    color: #007bff;
-    font-size: 1.1em;
+    font-weight: 800;
+    color: var(--accent);
+    font-size: 1.15em;
 }
 
-/* Contenedor para los botones pequeños (para que estén en línea) */
 .choice-group {
     display: flex;
-    gap: 10px; /* Espacio entre botones */
-    margin-top: 5px;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 8px;
 }
 
-/* Botones pequeños (para Sexo y Embarazo) */
 .small-choice-button {
     display: block;
-    flex-grow: 1; /* Hace que ambos botones ocupen el mismo espacio */
-    padding: 15px 10px;
-    border: 2px solid #ccc;
-    border-radius: 8px;
+    flex: 1 1 140px;
+    padding: 14px 12px;
+    border: 1px solid rgba(23, 50, 77, 0.12);
+    border-radius: 16px;
+    background: #ffffff;
     text-align: center;
-    font-size: 1em;
-    font-weight: bold;
-    color: #333;
+    font-size: 0.98rem;
+    font-weight: 700;
+    color: var(--text-primary);
     cursor: pointer;
-    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+    box-shadow: 0 6px 16px rgba(26, 58, 90, 0.06);
+    transition: border-color 0.18s ease, background-color 0.18s ease, transform 0.18s ease, color 0.18s ease;
 }
+
 .small-choice-button:hover {
-    background-color: #f9f9f9;
-    border-color: #999;
+    transform: translateY(-1px);
+    background: var(--accent-soft);
+    border-color: rgba(31, 111, 178, 0.35);
 }
 
+.hidden-radio-choice:checked + .small-choice-button {
+    background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+    color: white;
+    border-color: transparent;
+}
 
-/* Estilo para el área de texto de narración */
 #hoja4_narrativa textarea {
     width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-sizing: border-box; /* Asegura que padding no aumente el ancho */
-    resize: vertical; /* Permite redimensionar solo verticalmente */
-    margin-top: 5px;
+    min-height: 180px;
+    padding: 16px 18px;
+    border: 1px solid rgba(23, 50, 77, 0.14);
+    border-radius: 18px;
+    background: #fbfdff;
+    color: var(--text-primary);
+    font: inherit;
+    line-height: 1.65;
+    box-sizing: border-box;
+    resize: vertical;
+    margin-top: 8px;
+    transition: border-color 0.18s ease, box-shadow 0.18s ease, background-color 0.18s ease;
 }
 
-/* Estilo cuando el radio oculto está seleccionado */
-.hidden-radio-choice:checked + .small-choice-button {
-    background-color: #007bff;
-    color: white;
-    border-color: #007bff;
+#hoja4_narrativa textarea:focus {
+    outline: none;
+    border-color: rgba(31, 111, 178, 0.42);
+    box-shadow: 0 0 0 4px rgba(31, 111, 178, 0.12);
+    background: white;
 }
 
-/* =========================================
-   CAMBIOS PARA EL ESTILO CLÍNICO PRO
-   ========================================= */
-
-/* 1. El contenedor principal de cada síntoma ahora es una "tarjeta" */
 .grupo-sintoma {
-    border-left: 5px solid #3182ce; /* La barra azul lateral que te gustó */
-    background: #ffffff;
-    margin-bottom: 15px;
-    border-radius: 6px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.08); /* Sombra suave para dar profundidad */
+    margin-bottom: 16px;
+    border: 1px solid rgba(31, 111, 178, 0.14);
+    border-left: 5px solid var(--accent);
+    border-radius: 18px;
+    background: linear-gradient(180deg, #ffffff, #f9fbfd);
+    box-shadow: 0 10px 22px rgba(24, 54, 84, 0.08);
     overflow: hidden;
-    border-top: 1px solid #edf2f7;
-    border-right: 1px solid #edf2f7;
-    border-bottom: 1px solid #edf2f7;
 }
 
-/* 2. La fila del título (Padre) ahora es grande y clickeable */
 .padre-row {
     display: flex;
     align-items: center;
     gap: 15px;
-    padding: 18px; /* Más espacio para que sea fácil tocar con el dedo */
-    font-weight: bold;
-    color: #2c5282;
+    padding: 18px 20px;
+    font-weight: 800;
+    color: var(--accent-dark);
     cursor: pointer;
-    transition: background 0.3s ease;
+    transition: background 0.2s ease;
 }
 
 .padre-row:hover {
-    background: #f7fafc; /* Efecto sutil al pasar el mouse */
+    background: #f3f9fd;
 }
 
-/* 3. La magia del Grid: Los hijos ahora se ven en dos columnas */
 .hijos-container {
-    display: none; /* Se activa como 'grid' desde el JS */
-    grid-template-columns: 1fr 1fr; /* Divide el espacio en 2 columnas iguales */
+    display: none;
+    grid-template-columns: 1fr 1fr;
     gap: 12px;
     padding: 20px;
-    background: #f8fafc;
-    border-top: 1px solid #e2e8f0;
+    background: #f7fbff;
+    border-top: 1px solid rgba(31, 111, 178, 0.12);
 }
 
-/* 4. Cada síntoma hijo ahora parece un botoncito individual */
 .hijo-item {
-    background: #ebf8ff;
-    padding: 12px;
-    border-radius: 8px;
-    font-size: 0.95rem;
     display: flex;
     align-items: center;
     gap: 10px;
-    color: #2a4365;
-    border: 1px solid #bee3f8;
-    transition: all 0.2s;
+    padding: 12px 14px;
+    border: 1px solid #cfe3f4;
+    border-radius: 14px;
+    background: white;
+    font-size: 0.95rem;
+    color: var(--text-primary);
+    transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .hijo-item:hover {
-    background: #e1f5fe;
-    border-color: #90cdf4;
+    transform: translateY(-1px);
+    border-color: #9ec6e7;
+    box-shadow: 0 10px 18px rgba(31, 111, 178, 0.08);
 }
 
-/* 5. Ajuste para celulares: Si la pantalla es angosta, vuelve a 1 columna */
-@media (max-width: 500px) {
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 920px) {
+    .page-shell {
+        grid-template-columns: 1fr;
+    }
+
+    .brand-panel {
+        position: relative;
+        top: 0;
+    }
+
+    .entities{
+        flex-direction: row;
+        gap: 18px;
+        align-items: center;
+        justify-content: space-between;
+        text-wrap: no-wrap;
+    }
+    
+}
+
+@media (max-width: 640px) {
+    body {
+        padding: 96px 16px 24px;
+    }
+
+    form,
+    .brand-panel,
+    fieldset {
+        padding: 22px;
+        border-radius: 22px;
+    }
+
+    .hospital-container {
+        padding: 12px 12px 0;
+    }
+
+    .eyebrow::before {
+        margin-bottom: 14px;
+        font-size: 0.72rem;
+    }
+
+    #score-display {
+        width: 100%;
+        max-width: 100%;
+        padding: 12px 16px;
+        font-size: 0.94rem;
+    }
+
+    .nav-buttons {
+        flex-direction: column;
+    }
+
+    .nav-buttons button,
+    .center-button button {
+        width: 100%;
+        max-width: none;
+    }
+
     .hijos-container {
         grid-template-columns: 1fr;
+    }
+
+    #hoja1 .big-choice-button {
+        width: 100%;
+        flex-basis: 100%;
+    }
+}
+
+@media (max-width: 530px) {
+    .entities{
+        flex-direction: column;
+        align-items: start;
+        gap: 0;
     }
 }

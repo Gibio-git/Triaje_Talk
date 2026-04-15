@@ -3,24 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Triaje Talk - Encuesta Médica</title>
+    <title>Agente Triage - Encuesta Médica</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header class="hospital-header">
-    Unidad Hospitalaria San José
-</header>
 
-    <div id="score-display">
-        Triage : <span id="score-value">0</span>
-    </div>
+    <header class="hospital-container">
+        <p>Unidad Hospitalaria San José</p>
+        <div id="score-display">
+            Triage : <span id="score-value">0</span>
+        </div>
+    </header>
 
-    <form id="multiStepForm" onsubmit="return false;">
+    <main class="page-shell">
+        <section class="brand-panel">
+            <div class="entities">
+                <img src="./LOGOS/CIBIO_Logo_transp.png" class="logo">
+                <p class="hospital-name">Unidad Hospitalaria San Jose</p>
+            </div>
+            <p class="eyebrow">Evaluacion Inicial</p>
+            <h1>Agente Triage</h1>
+            <p class="brand-subtitle">Orientacion rapida para registrar sintomas y priorizar la atencion clinica.</p>
+        </section>
+
+        <form id="multiStepForm" onsubmit="return false;">
 
         <div id="hoja1" class="survey-page">
             <fieldset>
                 <legend>Hoja 1: Identificación</legend>
-                <label>¿Quién está respondiendo?</label>
+                <label class="intro-question">¿Quién está respondiendo?</label>
                 
                 <input type="radio" id="paciente" name="respondiente" value="paciente" required class="hidden-radio-choice">
                 <label for="paciente" class="big-choice-button" onclick="showPage('hoja2')">
@@ -140,7 +151,8 @@
             </div>
         </div>
 
-    </form>
+        </form>
+    </main>
 
     <script src="scripts.js"></script>
 </body>
