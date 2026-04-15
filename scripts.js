@@ -225,3 +225,25 @@ document.addEventListener('DOMContentLoaded', () => showPage('hoja1'));
 const mainForm = document.getElementById('multiStepForm');
 mainForm.addEventListener('change', calculateScore);
 mainForm.addEventListener('input', calculateScore);
+
+//funcion para habilitar el embarazo solo si es mujer:
+function hayEmbarazo() {
+    const esHombre = document.getElementById('hombre').checked;
+    
+    const embSi = document.getElementById('emb_si');
+    const embNo = document.getElementById('emb_no');
+
+    if (esHombre) {
+        // Desmarcar
+        embSi.checked = false;
+        embNo.checked = false;
+
+        // Deshabilitar
+        embSi.disabled = true;
+        embNo.disabled = true;
+    } else {
+        // Habilitar
+        embSi.disabled = false;
+        embNo.disabled = false;
+    }
+}

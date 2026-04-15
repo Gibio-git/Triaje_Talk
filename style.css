@@ -49,6 +49,21 @@ form {
     display: block; 
 }
 
+/*Estilo para titulo de hoispital*/
+.hospital-header {
+    position: fixed;
+    top: 80px; /* debajo del score */
+    width: 100%;
+    text-align: center;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #2c3e50;
+    background: #ecf0f1;
+    padding: 10px;
+    z-index: 90;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
 /* Estilos de los fieldset y labels */
 fieldset { 
     border: 1px solid #ddd; 
@@ -76,6 +91,14 @@ input[type="radio"] + label,
 input[type="checkbox"] + label { 
     display: inline-block; 
     margin-right: 15px; 
+}
+
+/*deshabilitar el input de embarazo al seleccionar hombre*/
+input:disabled + label {
+    background-color: #eee !important;
+    color: #999 !important;
+    border-color: #ccc !important;
+    cursor: not-allowed;
 }
 
 /* Estilos de botones de navegación */
@@ -211,20 +234,6 @@ input[type="range"] {
     border-color: #999;
 }
 
-/*Estilo para titulo de hoispital*/
-.hospital-header {
-    position: fixed;
-    top: 70px; /* debajo del score */
-    width: 100%;
-    text-align: center;
-    font-size: 1.2em;
-    font-weight: bold;
-    color: #2c3e50;
-    background: #ecf0f1;
-    padding: 10px;
-    z-index: 90;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
 
 /* Estilo para el área de texto de narración */
 #hoja4_narrativa textarea {

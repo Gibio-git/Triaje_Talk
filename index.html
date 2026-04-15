@@ -47,14 +47,14 @@
                 
                 <label style="margin-top: 20px;">¿Sexo?</label>
                 <div class="choice-group">
-                    <input type="radio" id="mujer" name="sexo" value="mujer" required class="hidden-radio-choice">
+                    <input type="radio" id="mujer" name="sexo" value="mujer" required class="hidden-radio-choice" onchange="hayEmbarazo()">
                     <label for="mujer" class="small-choice-button">Mujer</label>
                     
-                    <input type="radio" id="hombre" name="sexo" value="hombre" class="hidden-radio-choice">
+                    <input type="radio" id="hombre" name="sexo" value="hombre" class="hidden-radio-choice" onchange="hayEmbarazo()">
                     <label for="hombre" class="small-choice-button">Hombre</label>
                 </div>
 
-                <label style="margin-top: 20px;">¿Embarazo? (Solo si aplica)</label>
+                <label style="margin-top: 20px;">¿Embarazo?</label>
                 <div class="choice-group">
                     <input type="radio" id="emb_si" name="embarazo" value="si" class="hidden-radio-choice">
                     <label for="emb_si" class="small-choice-button">Sí</label>
